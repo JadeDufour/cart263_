@@ -17,8 +17,7 @@ let $rightChoice;
 //each wrong guess scares more kids
 let money = 0;
 
-//home screen active
-let homeScreenActive = true;
+
 let homeScreenFont;
 
 //An array of creepy clickbait thumbnails found online
@@ -55,7 +54,7 @@ let friendly = [
 // let currentClickbait = '';
 
 function preload(){
-  homeScreenFont = loadFont("assets/Calculator.ttf");
+  homeScreenFont = loadFont("assets/fonts/Calculator.ttf");
 }
 $(document).ready(setup);
 
@@ -66,13 +65,14 @@ function setup(){
 
   $leftChoice = $('#left');
   $rightChoice = $('#right');
+
   //for a new round to begin
   newRound();
   if (annyang) {
 
 // Let's define our first command. First the text we expect, and then the function it should call
 var commands = {
- "Start the day": quitHomeScreen,
+ "Start the day": off,
  "I think it is number one": handleVoiceGuess1,
  "I think it is number two": handleVoiceGuess2,
 
@@ -85,27 +85,48 @@ annyang.addCommands(commands);
 annyang.start();
 }
 }
-function draw(){
-  if (homeScreenActive){
-    homeScreen();
-  }
-  else if (!homeScreenActive){
 
-  }
+// //=====================Draw
+// function draw(){
+//   if (homeScreenActive){
+//     homeScreen();
+//   }
+//   else if (!homeScreenActive){
+//
+//   }
+// }
+//
+
+  // responsivevoice.speak('hi', 'US English Male');
+
+    //
+    //
+    // textSize(20);
+    // textFont(homeScreenFont);
+    // textAlign(CENTER);
+    // text("Welcome back.\n Say : <Start the day > to start working \n with your AI coworker" , width/2, height/2);
+
+
+// function quitHomeScreen(){}
+function timeHomescreen(){
+  var today = new Date();
+ var h = today.getHours();
+ var m = today.getMinutes();
+ var s = today.getSeconds();
+
+ m = checkTime(m);
+ s = checkTime(s);
+ document.getElementById('body').innerHTML = h + ":" + m + ":" + s;
+ var t = setTimeout(timeHomescreen, 300);
+}
+function checkTime(i) {
+ if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+ return i;
 }
 
-function homeScreen(){
-
-  responsivevoice.speak('hi', 'US English Male');
-  background(blue);
-  push();
-    textSize(20);
-    textFont(homeScreenFont);
-    textAlign(CENTER);
-    text("Welcome back.\n Say : <Start the day > to start working \n with your AI coworker" , width/2, height/2);
-  pull();
+function off() {
+  document.getElementById("homescreen").style.display = "none";
 }
-function quitHomeScreen(){}
 
 function handleVoiceGuess1(){
 if($leftChoice= clickbait[0]){
@@ -142,14 +163,6 @@ function newRound(){
 
 
 // let imageIndex = Math.floor(Math.random() * abusePhrases.length);
-
-
-
-
-
-
-
-
 
 
   //===========================================================================
