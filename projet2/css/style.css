@@ -1,3 +1,33 @@
 body {
+background-color: yellow;
+text-align: center;
+}
 
+main{
+  width: 1200px;
+  height: 600px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.choiceBox{
+  margin:auto;
+  padding-top: 150px;
+  background-color: pink;
+  width:1200px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#left{
+  width: 450px;
+  height: 300px;
+}
+
+
+#right{
+  width: 450px;
+  height: 300px;
 }
