@@ -17,6 +17,10 @@ let $rightChoice;
 //each wrong guess scares more kids
 let money = 0;
 
+//home screen active
+let homeScreenActive = true;
+let homeScreenFont;
+
 //An array of creepy clickbait thumbnails found online
 let clickbait = [
   "no1.jpg",
@@ -50,7 +54,9 @@ let friendly = [
 // let currentFriendly = '';
 // let currentClickbait = '';
 
-
+function preload(){
+  homeScreenFont = loadFont("assets/Calculator.ttf");
+}
 $(document).ready(setup);
 
 
@@ -66,16 +72,10 @@ function setup(){
 
 // Let's define our first command. First the text we expect, and then the function it should call
 var commands = {
-//the player guesses the animal, if then the games handles the guess
+ "Start the day": quitHomeScreen,
  "I think it is number one": handleVoiceGuess1,
  "I think it is number two": handleVoiceGuess2,
-// //i give up = a new round starts
-//   'I give up': giveUp,
-// //Say it again = a hint ( the voice repeats)
-//   'Say it again': function () {
-//      sayBackwards($correctButton.text()
-//    );
-//  }
+
 };
 
 // Add our commands to annyang
@@ -85,6 +85,27 @@ annyang.addCommands(commands);
 annyang.start();
 }
 }
+function draw(){
+  if (homeScreenActive){
+    homeScreen();
+  }
+  else if (!homeScreenActive){
+
+  }
+}
+
+function homeScreen(){
+
+  responsivevoice.speak('hi', 'US English Male');
+  background(blue);
+  push();
+    textSize(20);
+    textFont(homeScreenFont);
+    textAlign(CENTER);
+    text("Welcome back.\n Say : <Start the day > to start working \n with your AI coworker" , width/2, height/2);
+  pull();
+}
+function quitHomeScreen(){}
 
 function handleVoiceGuess1(){
 if($leftChoice= clickbait[0]){
