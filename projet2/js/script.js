@@ -60,12 +60,6 @@ $(document).ready(setup);
 
 function setup() {
 
-  //   responsivevoice.speak('hi', 'US English Male',{
-  //   pitch: 2,
-  //   rate: 2,
-  //   volume: 1
-  // });
-
   $leftChoice = $('#left');
   $rightChoice = $('#right');
 
@@ -91,34 +85,38 @@ function setup() {
   }
 }
 
-// //=====================Draw
-// function draw(){
-//   if (homeScreenActive){
-//     homeScreen();
-//   }
-//   else if (!homeScreenActive){
-//
-//   }
-// }
-//
-
-// responsivevoice.speak('hi', 'US English Male');
 
 
-
-
+// Display the time
+// Got the code from : https://stackoverflow.com/questions/10931197/make-a-live-clock-with-existing-time-in-div-with-javascript
+setInterval(function(){
+    document.getElementById("calendar").innerHTML = (new Date()).toLocaleTimeString();
+}, 1000);
 
 
 //To make the intro screen disapear
 function off() {
+
   document.getElementById("homescreen").style.display = "none";
+
+  setTimeout(tellInstructions, 200);
+
+}
+
+function tellInstructions(){
+  // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
+  let options = {
+    pitch: Math.random(),
+    rate: Math.random()
+  };
+  responsivevoice.speak("Refer to the instructions in the green box if you can't remember how to teach the AI ", 'UK English Male', options);
 }
 
 // If the player guessed that the clickbait image was in the left div
 function handleVoiceGuess1() {
   if ($leftChoice = clickbait[0]) {
     console.log('correct');
-    // newRound();
+    // nextRound();
   } else {
     console.log('wrong');
     moneyCount(money + 2942);
@@ -130,7 +128,7 @@ function handleVoiceGuess1() {
 function handleVoiceGuess2() {
   if ($rightChoice == clickbait[0]) {
     console.log('correct');
-    // newRound();
+    // nextRound();
   } else {
     console.log('wrong');
     moneyCount(money + 2942);
@@ -147,8 +145,6 @@ function moneyCount(newAmount) {
 
 function newRound() {
 
-
-  //===========================================================================
   //we have to create a 1/2 chance to get a good or a bad thumbnail for each div
   // There should only be one good image and one bad image displaying at the simultaneously
   let r = Math.random();
@@ -161,28 +157,19 @@ function newRound() {
     $rightChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
   }
 
-  //checkAnswer();
 }
 
-// function checkAnswer(){
+// function nextRound() {
 //
-//   // linking the variables
-//   if (animalGuess === $correctButton.text()) {
-//     // updating the score()
-//     scoreCount(score +1);
-//     // removes the buttons
-//     $('.guess').remove();
-//     // time delay
-//     setTimeout(newRound, 1000);
+//     //gotta remove the old guesses
+//     $("#left").remove();
+//     $("#right").remove();
 //
-//   } else {
-//     // shake event
-//     $('.guess').effect('shake');
+//       setTimeout(newRound, 800);
 //
-//     // says answer backwards
-//     sayBackwards($correctButton.text());
 //   }
-// }
+
+
 
 //
 // $(function() {
