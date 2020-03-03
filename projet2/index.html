@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
 
-    <!-- CSS stylesheet(s) -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
 
-      <!-- Libraries -->
-      <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+  <!-- CSS stylesheet(s) -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-      <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-      <script
-      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-      crossorigin="anonymous"></script>
+  <!-- Libraries -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-      <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-      <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+  <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
-       <!-- My script(s) -->
-     <script src="js/script.js"></script>
-  </head>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 
-  <body>
-    <div id="homescreen">
-      <h1>Welcome, <br><br> Say 'Start the day' to begin working with your AI coworker.<br> <br>Remember, you need to teach it how to recognize misleading videos</h1>
+  <!-- Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
+
+  <!-- My script(s) -->
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+
+  <!-- the homescreen to let the player know what to do -->
+  <div id="homescreen" onclick="off()">
+    <h1>Welcome, <br><br> Say 'Start the day' to begin working with your AI coworker.<br> <br>Remember, you need to teach it how to recognize misleading videos, if you guess wrong, evil companies will make more profit</h1>
+  </div>
+  <h2>Moderation Center</h2>
+
+  <!-- Containing both the intruction box and the one containing the images -->
+  <div id="container">
+
+    <div id="instructions">
+      <!-- code inspired by https://www.wifeo.com/code/37-css-over-animation-texte.html  -->
+      <!-- This box shows some more instructions on hover -->
+      <div class="contener">
+        <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+        <div class="txt_init"><img id="infoImg" src="assets/images/info.png" width=120%;></img></div>
+        <div class="opac"><br>How to teach your AI pal : <br>----------<br> Say "I think it is number one" if the bad image is on the LEFT <br>----------<br> Say "I think it is number two" if the bad image if on the RIGHT</div>
+      </div>
+
     </div>
-<h2>Moderation Center</h2>
 
-<div id="container">
+    <!-- The box displaying the two images -->
+    <div class="choiceBox">
+      <img id="left" src="assets/images/logo.png" alt="youtube logo">
+      <img id="right" src="assets/images/logo.png" alt="youtube logo">
+      <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
 
-<div id="instructions">
-<!-- code inspired by https://www.wifeo.com/code/37-css-over-animation-texte.html  -->
-  <div class="contener">
-    <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
-    <div class="txt_init"><img src="assets/images/info.png"></img></div>
-    <div class="opac"><br>How to teach your AI pal : <br>----------<br> Say "I think it is number 1" if the bad image is on the LEFT <br>----------<br> Say "I think it is number 2" if the bad image if on the RIGHT</div>
+      <h1> <img src="assets/images/black-cat.png" width="8%"></img> Money made by malicious companies: <span class="score">0</span> $</h1>
+    </div>
+
+
   </div>
 
-</div>
-
-
-
-<div class="choiceBox">
-    <img id="left"src="assets/images/logo.png" alt="youtube logo">
-    <img id="right"src="assets/images/logo.png" alt="youtube logo">
-    <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
-
-    <h1>  <img src="assets/images/black-cat.png" width="8%"></img>  Money made by malveillant companies: <span class="score">0</span> $</h1>
-</div>
-
-
-</div>
-
-  </body>
+</body>
 
 </html>

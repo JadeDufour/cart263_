@@ -11,16 +11,16 @@ to match your project! Write JavaScript to do amazing things below!
 **Every 'friendly' thumbnails come from verified (certified) youtube channels (Nick Jr, Peppa Pig Official, Little Angel, Masha ans The Bear, Toddler Fun Learning, DC SuperHero Girls)**
 
 *********************************************************************/
-
+// Both boxes that will display the right and wrong images
 let $leftChoice;
 let $rightChoice;
-//each wrong guess scares more kids
+//each wrong guess gives more money to evil companies
 let money = 0;
 
-
+// the overlay div that displays the initial instuctions
 let homeScreenFont;
 
-//An array of creepy clickbait thumbnails found online
+//An array of wierd clickbait thumbnails found online
 let clickbait = [
   "no1.jpg",
   "no2.jpg",
@@ -36,7 +36,7 @@ let clickbait = [
 
 ]
 
-//an array of actual thumbnails that kids friendly
+//an array of actual thumbnails that are kids friendly, found on certified Youtube accounts
 let friendly = [
   "yes1.jpg",
   "yes2.jpg",
@@ -53,20 +53,18 @@ let friendly = [
 // let currentFriendly = '';
 // let currentClickbait = '';
 
-function preload(){
-  homeScreenFont = loadFont("assets/fonts/Calculator.ttf");
-}
+
 $(document).ready(setup);
 
 
 
-function setup(){
+function setup() {
 
-//   responsivevoice.speak('hi', 'US English Male',{
-//   pitch: 2,
-//   rate: 2,
-//   volume: 1
-// });
+  //   responsivevoice.speak('hi', 'US English Male',{
+  //   pitch: 2,
+  //   rate: 2,
+  //   volume: 1
+  // });
 
   $leftChoice = $('#left');
   $rightChoice = $('#right');
@@ -75,20 +73,22 @@ function setup(){
   newRound();
   if (annyang) {
 
-// Let's define our first command. First the text we expect, and then the function it should call
-var commands = {
- "Start the day": off,
- "I think it is number one": handleVoiceGuess1,
- "I think it is number two": handleVoiceGuess2,
 
-};
+    var commands = {
+      // To hide the overlay div
+      "Start the day": off,
+      // The next two commands are to handle the guesses depending on the div chosen (the left one or the right one)
+      "I think it is number one": handleVoiceGuess1,
+      "I think it is number two": handleVoiceGuess2,
 
-// Add our commands to annyang
-annyang.addCommands(commands);
+    };
 
-// Start listening. You can call this here, or attach this call to an event, button, etc.
-annyang.start();
-}
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+
+    // Start listening.
+    annyang.start();
+  }
 }
 
 // //=====================Draw
@@ -102,86 +102,63 @@ annyang.start();
 // }
 //
 
-  // responsivevoice.speak('hi', 'US English Male');
+// responsivevoice.speak('hi', 'US English Male');
 
-    //
-    //
-    // textSize(20);
-    // textFont(homeScreenFont);
-    // textAlign(CENTER);
-    // text("Welcome back.\n Say : <Start the day > to start working \n with your AI coworker" , width/2, height/2);
 
-// function quitHomeScreen(){}
-function timeHomescreen(){
-  var today = new Date();
- var h = today.getHours();
- var m = today.getMinutes();
- var s = today.getSeconds();
 
- m = checkTime(m);
- s = checkTime(s);
- document.getElementById('body').innerHTML = h + ":" + m + ":" + s;
- var t = setTimeout(timeHomescreen, 300);
-}
-function checkTime(i) {
- if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
- return i;
-}
 
+
+
+//To make the intro screen disapear
 function off() {
   document.getElementById("homescreen").style.display = "none";
 }
 
-function handleVoiceGuess1(){
-if($leftChoice= clickbait[0]){
-console.log('correct');
-// newRound();
-}
-else{
-console.log('wrong');
-moneyCount(money + 2942);
-}
-
-}
-
-function handleVoiceGuess2(){
-  if($rightChoice== clickbait[0]){
-console.log('correct');
-// newRound();
-  }
-  else{
-console.log('wrong');
-moneyCount(money + 2942);
+// If the player guessed that the clickbait image was in the left div
+function handleVoiceGuess1() {
+  if ($leftChoice = clickbait[0]) {
+    console.log('correct');
+    // newRound();
+  } else {
+    console.log('wrong');
+    moneyCount(money + 2942);
   }
 
+}
+
+// If the player guessed that the clickbait image was in the right div
+function handleVoiceGuess2() {
+  if ($rightChoice == clickbait[0]) {
+    console.log('correct');
+    // newRound();
+  } else {
+    console.log('wrong');
+    moneyCount(money + 2942);
   }
 
-  function moneyCount(newAmount){
-  //Updates the score depending on the guess (right or wrong)
- money= newAmount;
- $(".score").text(money);
+}
+
+//Updates the score depending on the guess (right or wrong)
+function moneyCount(newAmount) {
+  money = newAmount;
+  $(".score").text(money);
 }
 
 
-function newRound(){
-
-
-// let imageIndex = Math.floor(Math.random() * abusePhrases.length);
+function newRound() {
 
 
   //===========================================================================
   //we have to create a 1/2 chance to get a good or a bad thumbnail for each div
-
+  // There should only be one good image and one bad image displaying at the simultaneously
   let r = Math.random();
 
-  if (r > 0.5){
-    $leftChoice.attr('src','assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
-    $rightChoice.attr('src','assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
-  }
-
-  else {
-    $leftChoice.attr('src','assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
-    $rightChoice.attr('src','assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+  if (r > 0.5) {
+    $leftChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+    $rightChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
+  } else {
+    $leftChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
+    $rightChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
   }
 
   //checkAnswer();
@@ -207,10 +184,10 @@ function newRound(){
 //   }
 // }
 
-
-$( function() {
-    $( "#bar" ).progressbar({
-      background: 'green',
-      value: 80
-    });
-  } );
+//
+// $(function() {
+//   $("#bar").progressbar({
+//     background: 'green',
+//     value: 80
+//   });
+// });
