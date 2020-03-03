@@ -62,6 +62,11 @@ $(document).ready(setup);
 
 function setup(){
 
+//   responsivevoice.speak('hi', 'US English Male',{
+//   pitch: 2,
+//   rate: 2,
+//   volume: 1
+// });
 
   $leftChoice = $('#left');
   $rightChoice = $('#right');
@@ -105,7 +110,6 @@ annyang.start();
     // textFont(homeScreenFont);
     // textAlign(CENTER);
     // text("Welcome back.\n Say : <Start the day > to start working \n with your AI coworker" , width/2, height/2);
-
 
 // function quitHomeScreen(){}
 function timeHomescreen(){
