@@ -49,10 +49,6 @@ let friendly = [
   "yes10.jpg",
   "yes11.jpg"
 ]
-//
-// let currentFriendly = '';
-// let currentClickbait = '';
-
 
 $(document).ready(setup);
 
@@ -70,16 +66,18 @@ function setup() {
 
     var commands = {
       // To hide the overlay div
-      // "start the day": off,
+      "start the day": off,
       // The next two commands are to handle the guesses depending on the div chosen (the left one or the right one)
-      // "I think it is number one": handleVoiceGuess1,
-      // "I think it is number two": handleVoiceGuess2,
-      "*text": function (text) { console.log(text); }
+      "I think it is number one": handleVoiceGuess1,
+      "I think it is number two": handleVoiceGuess2,
+      "*text": function(text) {
+        console.log(text);
+      }
 
     };
 
-    $leftChoice.on('click',handleVoiceGuess1);
-    $rightChoice.on('click',handleVoiceGuess2);
+    $leftChoice.on('click', handleVoiceGuess1);
+    $rightChoice.on('click', handleVoiceGuess2);
 
     // Add our commands to annyang
     annyang.addCommands(commands);
@@ -89,12 +87,10 @@ function setup() {
   }
 }
 
-
-
 // Display the time
 // Got the code from : https://stackoverflow.com/questions/10931197/make-a-live-clock-with-existing-time-in-div-with-javascript
-setInterval(function(){
-    document.getElementById("calendar").innerHTML = (new Date()).toLocaleTimeString();
+setInterval(function() {
+  document.getElementById("calendar").innerHTML = (new Date()).toLocaleTimeString();
 }, 1000);
 
 
@@ -107,11 +103,11 @@ function off() {
 
 }
 
-function tellInstructions(){
+function tellInstructions() {
   // Set some random numbers for the voice's pitch and rate parameters for a bit of fun
   let options = {
-    pitch: Math.random(),
-    rate: Math.random()
+    pitch: 1,
+    rate: 1
   };
   responsiveVoice.speak("Refer to the instructions in the green box if you can't remember how to teach the AI ", 'UK English Male', options);
 }
@@ -120,6 +116,7 @@ function tellInstructions(){
 function handleVoiceGuess1() {
   if ($leftChoice.hasClass('clickbait')) {
     console.log('correct');
+    // create a new round
     newRound();
   } else {
     console.log('wrong');
@@ -141,8 +138,8 @@ function handleVoiceGuess2() {
 }
 
 //Updates the score depending on the guess (right or wrong)
-function moneyCount(newAmount) {
-  money = newAmount;
+function moneyCount(amount) {
+  money = amount
   $(".score").text(money);
 }
 
@@ -157,32 +154,14 @@ function newRound() {
 
   if (r > 0.5) {
     $leftChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+    // We give a class of Clickbait (thats what the game will be looking for when checking if the answer given if right or wrong)
     $leftChoice.addClass('clickbait');
     $rightChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
   } else {
     $leftChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
     $rightChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+    // We give a class of Clickbait (thats what the game will be looking for when checking if the answer given if right or wrong)
     $rightChoice.addClass('clickbait');
   }
 
 }
-
-// function nextRound() {
-//
-//     //gotta remove the old guesses
-//     $("#left").remove();
-//     $("#right").remove();
-//
-//       setTimeout(newRound, 800);
-//
-//   }
-
-
-
-//
-// $(function() {
-//   $("#bar").progressbar({
-//     background: 'green',
-//     value: 80
-//   });
-// });
