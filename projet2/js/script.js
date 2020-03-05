@@ -70,12 +70,16 @@ function setup() {
 
     var commands = {
       // To hide the overlay div
-      "Start the day": off,
+      // "start the day": off,
       // The next two commands are to handle the guesses depending on the div chosen (the left one or the right one)
-      "I think it is number one": handleVoiceGuess1,
-      "I think it is number two": handleVoiceGuess2,
+      // "I think it is number one": handleVoiceGuess1,
+      // "I think it is number two": handleVoiceGuess2,
+      "*text": function (text) { console.log(text); }
 
     };
+
+    $leftChoice.on('click',handleVoiceGuess1);
+    $rightChoice.on('click',handleVoiceGuess2);
 
     // Add our commands to annyang
     annyang.addCommands(commands);
@@ -109,14 +113,14 @@ function tellInstructions(){
     pitch: Math.random(),
     rate: Math.random()
   };
-  responsivevoice.speak("Refer to the instructions in the green box if you can't remember how to teach the AI ", 'UK English Male', options);
+  responsiveVoice.speak("Refer to the instructions in the green box if you can't remember how to teach the AI ", 'UK English Male', options);
 }
 
 // If the player guessed that the clickbait image was in the left div
 function handleVoiceGuess1() {
-  if ($leftChoice = clickbait[0]) {
+  if ($leftChoice.hasClass('clickbait')) {
     console.log('correct');
-    // nextRound();
+    newRound();
   } else {
     console.log('wrong');
     moneyCount(money + 2942);
@@ -126,9 +130,9 @@ function handleVoiceGuess1() {
 
 // If the player guessed that the clickbait image was in the right div
 function handleVoiceGuess2() {
-  if ($rightChoice == clickbait[0]) {
+  if ($rightChoice.hasClass('clickbait')) {
     console.log('correct');
-    // nextRound();
+    newRound();
   } else {
     console.log('wrong');
     moneyCount(money + 2942);
@@ -145,16 +149,20 @@ function moneyCount(newAmount) {
 
 function newRound() {
 
+  $('.clickbait').removeClass('clickbait');
+
   //we have to create a 1/2 chance to get a good or a bad thumbnail for each div
   // There should only be one good image and one bad image displaying at the simultaneously
   let r = Math.random();
 
   if (r > 0.5) {
     $leftChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+    $leftChoice.addClass('clickbait');
     $rightChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
   } else {
     $leftChoice.attr('src', 'assets/images/ok/' + friendly[Math.floor(Math.random() * friendly.length)]);
     $rightChoice.attr('src', 'assets/images/notok/' + clickbait[Math.floor(Math.random() * clickbait.length)]);
+    $rightChoice.addClass('clickbait');
   }
 
 }
