@@ -2,6 +2,29 @@ body {
   background-color: #FFFF99;
   text-align: center;
   padding-top: 20px;
+  padding: 150px;
+}
+
+#robot{
+  transform: translateY(12%);
+}
+
+#myProgress {
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+
+}
+
+.progress{
+  font-family: 'Oxanium';
+  font-size: 30px;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #99CCFF;
 }
 
 #container {
@@ -14,7 +37,7 @@ body {
   margin: auto;
   margin-top: -40px;
   margin-bottom: 50px;
-  padding: 50px;
+  padding: 70px;
   box-shadow: 20px 20px 50px 15px #FF99CC inset;
   border-radius: 5px;
 }

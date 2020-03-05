@@ -7,17 +7,15 @@
 
   <!-- CSS stylesheet(s) -->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-
   <!-- Libraries -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+  <!-- jquery -->
   <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-
+  <!-- responsive voice -->
   <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-
+  <!-- annyang -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-
   <!-- Font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
@@ -32,7 +30,10 @@
   <div id="homescreen" onclick="off()">
     <h1>Welcome, <br><br> Say 'Start the day' to begin working with your AI coworker.<br> <br>Remember, you need to teach it how to recognize misleading videos, if you guess wrong, evil companies will make more profit</h1>
   </div>
-  <h2>Moderation Center</h2>
+  <!-- The robot was found there : https://fcit.usf.edu/matrix/project/robot-78-happy-dance-animated-gif-robot/ -->
+  <h2> <img id="robot" src="assets/images/robot.png" width="11%"></img> Moderation Center</h2>
+
+
 
   <!-- Containing both the intruction box and the one containing the images -->
   <div id="container">
@@ -57,8 +58,23 @@
 
       <h1> <img src="assets/images/black-cat.png" width="8%"></img> Money made by malicious companies: <span class="score">0</span> $</h1>
     </div>
-<div id="calendar"></div>
-    </div>
+    <!-- Time displaying -->
+    <div id="calendar"></div>
+  </div>
+<!-- shows the learning progress of the AI -->
+<div class="progress">
+  <p>AI Learning Progress : </p>
+
+
+  <!-- progress bar displaying the AI learning  -->
+  <div id="myProgress">
+    <div id="myBar"></div>
+  </div>
+<br><br>
+</div>
+  <!-- a dialog box when the AI is done learning -->
+    <div id="dialogEnd" title="Congratulations!"><img src="assets/images/dance.gif"></img></div>
+
 
 </body>
 
