@@ -34,10 +34,24 @@ function dataLoaded(data) {
 // Get the random element from the cats array
   let randomCat = getRandomElement(data.cats);
   console.log(randomCat);
+
+  //make sure the right article is before the word (Cat in this case)
+    let articleCat = 'a';
+    if (randomCat.charAt(0) === 'A' || randomCat.charAt(0) === 'E' || randomCat.charAt(0) === 'I' || randomCat.charAt(0) === 'O') {
+      articleCat = 'an';
+    }
+
+
 // Get the random element from the rooms array
   let randomRoom = getRandomElement(data.rooms);
   console.log(randomRoom);
 
+  //make sure the right article is before the word (Room in this case)
+    let articleRoom = 'a';
+    if (randomRoom.charAt(0) === 'a' || randomRoom.charAt(0) === 'e' || randomRoom.charAt(0) === 'i' || randomRoom.charAt(0) === 'o') {
+      articleRoom = 'an';
+    }
+console.log(articleRoom);
   // Get the random element from the encouraging words array
     let encouragingWords = getRandomElement(data.encouraging_words);
     console.log(encouragingWords);
@@ -48,7 +62,7 @@ function dataLoaded(data) {
 
 
 // print the whole description
-  let randomDescription = `Just like ${celebrityName} used to say: "${randomCondiment} ${verb} like a ${randomCat} in a ${randomRoom} ." How ${encouragingWords}!`;
+  let randomDescription = `Just like ${celebrityName} used to say: "${randomCondiment} ${verb} like ${articleCat} ${randomCat} in ${articleRoom} ${randomRoom} ." How ${encouragingWords}!`;
   console.log(randomDescription);
 
   // dynamically change the css properties
