@@ -21,47 +21,48 @@ function setup() {
 function dataLoaded(data) {
   data = data;
   console.log(data);
-// Get the random element from the condiment array
+  // Get the random element from the condiment array
   let randomCondiment = getRandomElement(data.condiments);
   console.log(randomCondiment);
-// make sure the verb is correct
+  // make sure the verb is correct
   let verb = "is";
-  if(randomCondiment.charAt(randomCondiment.length - 1) === "s"){
-    verb= "are";
+  if (randomCondiment.charAt(randomCondiment.length - 1) === "s") {
+    verb = "are";
 
   }
   console.log(verb);
-// Get the random element from the cats array
+  // Get the random element from the cats array
   let randomCat = getRandomElement(data.cats);
   console.log(randomCat);
 
   //make sure the right article is before the word (Cat in this case)
-    let articleCat = 'a';
-    if (randomCat.charAt(0) === 'A' || randomCat.charAt(0) === 'E' || randomCat.charAt(0) === 'I' || randomCat.charAt(0) === 'O') {
-      articleCat = 'an';
-    }
+  let articleCat = 'a';
+  if (randomCat.charAt(0) === 'A' || randomCat.charAt(0) === 'E' || randomCat.charAt(0) === 'I' || randomCat.charAt(0) === 'O') {
+    articleCat = 'an';
+  }
 
 
-// Get the random element from the rooms array
+  // Get the random element from the rooms array
   let randomRoom = getRandomElement(data.rooms);
   console.log(randomRoom);
 
   //make sure the right article is before the word (Room in this case)
-    let articleRoom = 'a';
-    if (randomRoom.charAt(0) === 'a' || randomRoom.charAt(0) === 'e' || randomRoom.charAt(0) === 'i' || randomRoom.charAt(0) === 'o') {
-      articleRoom = 'an';
-    }
-console.log(articleRoom);
+  // also gotta make sure the characters are lower case, otherwise it wont work properly
+  let articleRoom = 'a';
+  if (randomRoom.charAt(0) === 'a' || randomRoom.charAt(0) === 'e' || randomRoom.charAt(0) === 'i' || randomRoom.charAt(0) === 'o') {
+    articleRoom = 'an';
+  }
+  console.log(articleRoom);
   // Get the random element from the encouraging words array
-    let encouragingWords = getRandomElement(data.encouraging_words);
-    console.log(encouragingWords);
+  let encouragingWords = getRandomElement(data.encouraging_words);
+  console.log(encouragingWords);
 
-    // Get the random element from the encouraging words array
-      let celebrityName = getRandomElement(data.celebrities);
-      console.log(celebrityName);
+  // Get the random element from the encouraging words array
+  let celebrityName = getRandomElement(data.celebrities);
+  console.log(celebrityName);
 
 
-// print the whole description
+  // print the whole description
   let randomDescription = `Just like ${celebrityName} used to say: "${randomCondiment} ${verb} like ${articleCat} ${randomCat} in ${articleRoom} ${randomRoom} ." How ${encouragingWords}!`;
   console.log(randomDescription);
 
@@ -81,6 +82,6 @@ function getRandomElement(array) {
 }
 
 // on click, refreshes the content
-function refresh(){
-location.reload(true);
+function refresh() {
+  location.reload(true);
 }
