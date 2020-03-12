@@ -51,15 +51,10 @@ function dataLoaded(data) {
   let randomDescription = `Just like ${celebrityName} used to say: "${randomCondiment} ${verb} like a ${randomCat} in a ${randomRoom} ." How ${encouragingWords}!`;
   console.log(randomDescription);
 
-
-
-  // let firstShadowMeaning = tarot.tarot_interpretations[4].meanings.shadow[4];
-  // console.log(firstShadowMeaning);
-
-
-
   // dynamically change the css properties
   $("body").append(`<p>${randomDescription}</p>`);
+
+  $('html').on('click', refresh);
 }
 
 function dataNotLoaded(jqxhr, textStatus, error) {
@@ -69,4 +64,9 @@ function dataNotLoaded(jqxhr, textStatus, error) {
 function getRandomElement(array) {
   let element = array[Math.floor(Math.random() * array.length)];
   return element;
+}
+
+// on click, refreshes the content
+function refresh(){
+location.reload(true);
 }
