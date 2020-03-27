@@ -1,0 +1,40 @@
+body { margin: 0; }
+
+
+
+
+/* ************************* HTML setup ************************************* */
+html {
+  background: linear-gradient(to bottom, #000000, #000033);
+  min-height: 100%;
+  overflow: hidden;
+  transition: background-color 2s ease-in;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/* *** Code from https://github.com/VincentGarreau/particles.js/ ************ */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* ************************************************************************** */
+
+
+@keyframes opac {
+  from {opacity:0} to {opacity:1}
+}
+
+/****Used by particlesJS and Phaser****/
+canvas {
+  bottom: 40px;
+  left: 0px;
+  display: block;
+  position: fixed;
+  vertical-align: bottom;
+  z-index: -2;
+}
