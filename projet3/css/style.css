@@ -1,4 +1,13 @@
-body { margin: 0; }
+body {
+  font-size:25px;
+  margin: 10px 50px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+flex-wrap: wrap;
+
+}
 
 /* ************************* HTML setup ************************************* */
 html {
@@ -19,16 +28,15 @@ html {
   z-index: -1;
 }
 
-/* ************************************************************************** */
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bellota&display=swap');
 
 @keyframes opac {
   from {opacity:0} to {opacity:1}
 }
 
-
 canvas {
-  bottom: 40px;
+  bottom: -1px;
   left: 0px;
   display: block;
   position: fixed;
@@ -36,56 +44,119 @@ canvas {
   z-index: -2;
 }
 
-/* ********** Everything concerning questions and dialogues ***************** */
-.dialogue{
-  font-family: 'Quicksand';
-  font-size: 0.7rem;
-  width: 800px;
-  height: 200px;
-  margin: auto;
-  margin-top: 100px;
-  opacity: 80%;
-  background-color: white;
-  z-index: 1;
-  align-content: space-between;
-  padding: 20px;
-  border-radius: 4px;
-}
+
+/* *****************************Intro button ******************************** */
+
+/* Code from https://www.fabriziovanmarciano.com/button-styles/?cn-reloaded=1 */
 
 #click {
   text-align: center;
   margin: auto;
   margin-top: 100px;
-  font-size: 1.5em;
+  font-size: 1.7em;
+  font-weight: 600;
   padding: 20px;
   background-color: #0080FF;
-  width: 200px;
+  width: 300px;
   border-radius: 5px;
   z-index: 1;
 }
 
 .button {
-  padding: 15px 25px;
-  font-size: 40px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: white;
-  background-color: #0080FF;
+  font-family: 'Quicksand';
+  background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #000066;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 5px;
   z-index: 1;
-
+  color: #000066;
 }
 
-.button:active {
-  background-color: #000066;
-  box-shadow: 0 5px #000066;
-  transform: translateY(4px);
+.button_f span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+.button_f span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -150px;
+  transition: 0.5s;
+}
+.button_f:hover span {
+  padding-right: 25px;
+}
+.button_f:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
-/* ********** The questions will be displayed in that div ******************* */
+
+
+
+/* ====================================== */
+#homescreen {
+  position: fixed;
+  /* Sit on top of the page content */
+  display: block;
+  /* Hidden by default */
+  width: 100%;
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Black background with opacity */
+  z-index: 2;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer;
+  /* Add a pointer on hover */
+  font-family: 'Bellota';
+  font-size: 15px;
+
+  text-align: center;
+  padding-top: 200px;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+/* ********** Everything concerning questions and dialogues ***************** */
+.dialogue{
+  font-family: 'Quicksand';
+  font-size: 0.8rem;
+  width: 900px;
+  height: 250px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 35px;
+  opacity: 80%;
+  background-color: white;
+  z-index: 1;
+  align-content: space-between;
+  padding: 25px;
+  padding-top: 50px;
+  border-radius: 4px;
+}
+
+/* *** The questions will be displayed in that div *** */
 .questions {
   margin-top: 50px;
 }
