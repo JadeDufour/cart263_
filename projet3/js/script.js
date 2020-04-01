@@ -24,6 +24,7 @@ let $clickButton;
 let windowHeight;
 let windowWidth;
 let currentAlter;
+let previousSeq;
 
 
 function setup() {
@@ -51,6 +52,7 @@ $clickButton.on('click', first)
 
 function off() {
   document.getElementById("homescreen").style.display = "none";
+  hostMusic.loop = true;
   hostMusic.play();
 }
 
@@ -109,10 +111,13 @@ function addButton(label , seq) {
           jamesWhere();
           break;
 
-
+  case 13:
+        jamesWho();
+        break;
 
 
         }
+      previousSeq = seq;
       });
        $('.dialogue').append(button);
      }
@@ -159,7 +164,7 @@ function addButton(label , seq) {
       $('p').empty();
       text = "Yes! Dissociative Identity Disorder is a disorder that's formed due to childhood trauma. Essentially, it disrupts the personnality from integrating fully. So instead of having one fully formed personnality, a child will grow up having multiple self-states";
       $('p').append(text);
-      addButton("That would be the alters?", 10);
+      addButton("That would be the alters?", 8);
       addButton("And those self-states would end up living their own life, right?", 6);
 }
 
@@ -181,11 +186,11 @@ function addButton(label , seq) {
 
   // That would be the alters, right?
   // And if I'm correct, those self-states would end up living their own life.
-  //  # 3
+  //  # 6
     function margaretExplainsAlters() {
       $('.questions').remove();
       $('p').empty();
-      text = "Exact! Alters are fragmented parts of your consciousness with completely different memories, opinions, tastes, etc. They might have a different sex, age, gender, orientation. They are their own person!";
+      text = "Exact! Alters are fragmented parts of your consciousness with completely different memories, opinions, tastes, etc. They might have a different sex, age, gender, orientation. They are their own person! We have a current total of 26 alters :) ";
       $('p').append(text);
       addButton("So they are a coping mechanism used by the brain?", 8);
       // keep count of the current alter
@@ -198,7 +203,11 @@ function margaretDissociating(){
       $('p').empty();
       text = "Uhm...th... I'm sorry, I'm dissociating... ";
       $('p').append(text);
-      addButton("It's alright, take your time.", 9);
+      if( previousSeq === 2){
+      addButton("No worries, take your time.", 11);
+      }
+      else{
+      addButton("It's alright, take your time.", 9);}
       // keep count of the current alter
       currentAlter = 0;
     }
@@ -209,40 +218,28 @@ function margaretDissociating(){
       $('p').empty();
       text = " ... ";
       $('p').append(text);
-      addButton(" ... ", 10);
+      addButton(" ... ", 11);
 
       // keep count of the current alter
       currentAlter = 3;
-
-      // var particlesJS, x;
-      // x= particlesJS.speed[0];
-      // if (particlesJS.speed[0] === 80){
-      //   x=10;
-      // }
 
       $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
         }
 
-// #10
-    function dissociating2(){
-        $('.questions').remove();
-        $('p').empty();
-        text = " ... Give me a sec,I think I'm dissociating...  ";
-        $('p').append(text);
-        addButton(" No worries, take your time.", 11);
-          // keep count of the current alter
-        currentAlter = 3;
-
-              // var particlesJS, x;
-              // x= particlesJS.speed[0];
-              // if (particlesJS.speed[0] === 80){
-              //   x=10;
-              // }
-
-        $html.css("background","linear-gradient(to bottom, #000000, #00000)");
-        particlesJS.load('particles-js', 'assets/data/none.json', function() {});
-          }
+// // #10
+//     function dissociating2(){
+//         $('.questions').remove();
+//         $('p').empty();
+//         text = " ... Give me a sec,...  ";
+//         $('p').append(text);
+//         addButton(" No worries, take your time.", 11);
+//           // keep count of the current alter
+//         currentAlter = 3;
+//
+//         $html.css("background","linear-gradient(to bottom, #000000, #00009)");
+//         particlesJS.load('particles-js', 'assets/data/none.json', function() {});
+//           }
 
 // #11
       function jamesIntro(){
@@ -264,33 +261,33 @@ function margaretDissociating(){
       function jamesWhere(){
         $('.questions').remove();
         $('p').empty();
-        text = "O' course! Margo told me we was goin to do this. ";
+        text = "Sure thing! Margo told me we was goin to do this. ";
         $('p').append(text);
-        addButton(" We were discussing alters, can you define what exactly is an alter? ", 13);
-        addButton("Is it just me or do I hear a different accent than Margo's?", 14);
+        addButton(" We were discussing alters, can you define what exactly is an alter? ", 7);
+        addButton("Is it just me or do I hear a different accent than Margo's?", 13);
         // keep count of the current alter
         currentAlter = 1;
       }
 
 // That would be the alters, right?
 // #7
-      function jameExplainsAlters() {
+      function jamesExplainsAlters() {
 
       $('.questions').remove();
       $('p').empty();
-      text = "Yeah, alter stands for 'Alternate States of Consciousness'. An alter aint someone how HAS DID. Now, people really need to take that off their minds.  Alters can hold trauma, others can act as protectors, some of 'em are young, others are super old.  ";
+      text = "Yeah, alter stands for 'Alternate States of Consciousness'. An alter aint someone how HAS DID. Now, people really need to take that off their minds. Alters can hold trauma, others can act as protectors, some of 'em are young, others are like super old. We have a current total of 26 alters.";
       $('p').append(text);
-      addButton(".", 5);
+      addButton("I see. Can you tell me more about yourself, James?", 13);
       // keep count of the current alter
       currentAlter = 1;
       }
 
-
-      function jameExplainsAlters() {
+// #13
+      function jamesWho() {
 
       $('.questions').remove();
       $('p').empty();
-      text = "Yeah, alter stands for <<Alternate States of consciousness>>  ";
+      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight. I'm part of the system, I'm actually the   ";
       $('p').append(text);
       addButton(".", 5);
       // keep count of the current alter
