@@ -278,6 +278,18 @@ function margaretDissociating(){
 
       $('.questions').remove();
       $('p').empty();
+      text = "Yeah, alter stands for 'Alternate States of Consciousness'. An alter aint someone how HAS DID. Now, people really need to take that off their minds.  Alters can hold trauma, others can act as protectors, some of 'em are young, others are super old.  ";
+      $('p').append(text);
+      addButton(".", 5);
+      // keep count of the current alter
+      currentAlter = 1;
+      }
+
+
+      function jameExplainsAlters() {
+
+      $('.questions').remove();
+      $('p').empty();
       text = "Yeah, alter stands for <<Alternate States of consciousness>>  ";
       $('p').append(text);
       addButton(".", 5);
