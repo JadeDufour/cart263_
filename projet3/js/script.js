@@ -29,7 +29,7 @@ let currentAlter;
 function setup() {
 
 hostMusic = new Audio('assets/sounds/output2975.mp3');
-jamesMusic = new Audio('assets/sounds/guitar.wav');
+jamesMusic = new Audio('assets/sounds/guitar.mp3');
 // Generate buttons to switch between texts
 $clickButton = $("#click");
 $clickButton.on('click', first)
@@ -108,8 +108,6 @@ function addButton(label , seq) {
     case 12:
           jamesWhere();
           break;
-
-
 
 
 
@@ -222,7 +220,7 @@ function margaretDissociating(){
       //   x=10;
       // }
 
-       $html.css("background","linear-gradient(to bottom, #000000, #00000)");
+      $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
         }
 
@@ -268,7 +266,7 @@ function margaretDissociating(){
         $('p').empty();
         text = "O' course! Margo told me we was goin to do this. ";
         $('p').append(text);
-        addButton(" We were discussing alters, ", 13);
+        addButton(" We were discussing alters, can you define what exactly is an alter? ", 13);
         addButton("Is it just me or do I hear a different accent than Margo's?", 14);
         // keep count of the current alter
         currentAlter = 1;
@@ -280,7 +278,7 @@ function margaretDissociating(){
 
       $('.questions').remove();
       $('p').empty();
-      text = "Yeah   ";
+      text = "Yeah, alter stands for <<Alternate States of consciousness>>  ";
       $('p').append(text);
       addButton(".", 5);
       // keep count of the current alter
