@@ -251,6 +251,7 @@ function margaretDissociating(){
         // keep count of the current alter
         currentAlter = 2;
         hostMusic.pause();
+        jamesMusic.loop = true;
         jamesMusic.play();
         $html.css("background","linear-gradient(to bottom, #000000, #7C0000)");
        particlesJS.load('particles-js', 'assets/data/james.json', function() {});
@@ -287,7 +288,7 @@ function margaretDissociating(){
 
       $('.questions').remove();
       $('p').empty();
-      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight. I'm part of the system, I'm actually the   ";
+      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight. I'm part of the system, I'm actually the primary protector.   ";
       $('p').append(text);
       addButton(".", 5);
       // keep count of the current alter
