@@ -113,16 +113,28 @@ function addButton(label , seq) {
           jamesWhere();
           break;
 
-  case 13:
-        jamesWho();
-        break;
+    case 13:
+          jamesWho();
+          break;
 
-  case 14:
-        jamesProtector();
-        break;
+    case 14:
+          jamesProtector();
+          break;
 
+    case 15:
+          sophiaIntro();
+          break;
+
+    case 16:
+          sophiaFear();
+          break;
+
+    case 17:
+          sophiaTalks();
+          break;
 
         }
+
       previousSeq = seq;
       });
        $('.dialogue').append(button);
@@ -153,7 +165,6 @@ function addButton(label , seq) {
       text = "Well, my name is Margo, I consider myself part of a DID system of which I am the host so I use the body's legal name. I'm a 26 years old female and I identify as pansexual. I love music and outdoor activities!";
       $('p').append(text);
       addButton("Do you consider yourself as the 'original'then?", 4);
-      addButton("Do you want me to put on some music?", 5)
       // keep count of the current alter
       currentAlter = 0;
       }
@@ -195,6 +206,7 @@ function addButton(label , seq) {
       text = "Exact! Alters are fragmented parts of your consciousness with completely different memories, opinions, tastes, etc. They might have a different sex, age, gender, orientation. They are their own person! We have a current total of 26 alters :) ";
       $('p').append(text);
       addButton("So they are a coping mechanism used by the brain?", 8);
+      addButton("Do you want me to put on some music?", 8);
       // keep count of the current alter
       currentAlter = 0;
       }
@@ -207,13 +219,19 @@ function margaretDissociating(){
       $('p').append(text);
       // If the player comes from the second question, they are redirected to the 11th one
       if( previousSeq === 2){
+        // leads to James
       addButton("No worries, take your time.", 11);
       }
-      // Else, they are redirected to the 9th one
+      if (previousSeq === 6){
+        // Leads to Sophia
+      addButton("Take your time, it's alright.", 15);
+      }
+      // Else, they are redirected to the 9th one, which also leads to james haha
       else{
-      addButton("It's alright, take your time.", 9);}
+      addButton("It's alright, take your time.", 9);
       // keep count of the current alter
-      currentAlter = 0;
+      currentAlter = 0;}
+
     }
 
 // #9
@@ -277,22 +295,54 @@ function margaretDissociating(){
       $('p').empty();
       text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight, yeah. I'm part of the system, I'm actually the primary protector.   ";
       $('p').append(text);
-      addButton("", 14);
+      addButton("What exactly is a primary protector?", 14);
       // keep count of the current alter
       currentAlter = 1;
       }
 
 
-  // #13
+  // #14
       function jamesProtector() {
       $('.questions').remove();
       $('p').empty();
-      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight, yeah. I'm part of the system, I'm actually the primary protector.   ";
+      text = "That means I'm   ";
       $('p').append(text);
-      addButton("", 14);
+      addButton(".", 15);
       // keep count of the current alter
       currentAlter = 1;
       }
 
 // -----------------°°°°° Sophia °°°°°------------------------------------------
 // child alter
+// #15
+    function sophiaIntro(){
+      $('.questions').remove();
+      $('p').empty();
+      text = "...Hi...  ";
+      $('p').append(text);
+      addButton("Hello, what's your name? ", 16);
+      // keep count of the current alter
+      currentAlter = 2;
+    }
+
+// #16
+    function sophiaFear(){
+      $('.questions').remove();
+      $('p').empty();
+      text = "...Sophia... im 5 ";
+      $('p').append(text);
+      addButton("Hi Sophia! Glad to meet you. I was just talking with someone else about your system.  ", 17);
+      // keep count of the current alter
+      currentAlter = 2;
+    }
+// #17
+    function sophiaTalks(){
+      $('.questions').remove();
+      $('p').empty();
+      text = "...We have DID! James told me last time we are together like a big family ";
+      $('p').append(text);
+      addButton("Yes and he is right! ", 18);
+      // keep count of the current alter
+      currentAlter = 2;
+
+    }
