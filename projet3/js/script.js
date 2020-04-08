@@ -14,7 +14,7 @@ to match your project! Write JavaScript to do amazing things below!
 
 $(document).ready(setup);
 
-// music found : https://freesound.org/people/ispeakwaves/sounds/384934/
+// sounds found : https://freesound.org/people/ispeakwaves/sounds/384934/
 let hostMusic;
 let childAlterMusic;
 let jamesMusic;
@@ -28,7 +28,7 @@ let previousSeq;
 
 
 function setup() {
-
+// Load the songs
 hostMusic = new Audio('assets/sounds/output2975.mp3');
 jamesMusic = new Audio('assets/sounds/guitar.mp3');
 // Generate buttons to switch between texts
@@ -49,19 +49,21 @@ $clickButton.on('click', first)
 
 
 }
-
+// The off function is for the introduction screen
 function off() {
   document.getElementById("homescreen").style.display = "none";
+  // When the screen is gone, play and loop the jamesMusic
   hostMusic.loop = true;
   hostMusic.play();
 }
-
+// We add buttons for each case
 function addButton(label , seq) {
   let button = $('<div class="questions"></div>');
   button.text(label);
   button.button();
   button.on('click', function() {
     //I used switch states to switch between the questions in the dialogue
+
     switch (seq) {
       case 1:
           MargaretIntro();
@@ -115,15 +117,19 @@ function addButton(label , seq) {
         jamesWho();
         break;
 
+  case 14:
+        jamesProtector();
+        break;
+
 
         }
       previousSeq = seq;
       });
        $('.dialogue').append(button);
      }
-
+// The initial state
+// -----------------°°°°° Margo °°°°°-------------------------------------------
      function first() {
-
        // The particles act as a visual reprentation of each alter but the main
        // interaction will be a dialogue with the alters
          particlesJS.load('particles-js', 'assets/data/host.json', function() {});
@@ -142,14 +148,12 @@ function addButton(label , seq) {
  // It's nice to meet you Margo. First off all, let me know more about you.
  // # 1
       function MargaretIntro() {
-
       $('.questions').remove();
       $('p').empty();
       text = "Well, my name is Margo, I consider myself part of a DID system of which I am the host so I use the body's legal name. I'm a 26 years old female and I identify as pansexual. I love music and outdoor activities!";
       $('p').append(text);
       addButton("Do you consider yourself as the 'original'then?", 4);
       addButton("Do you want me to put on some music?", 5)
-
       // keep count of the current alter
       currentAlter = 0;
       }
@@ -159,22 +163,20 @@ function addButton(label , seq) {
 // Can you explain exactly what it DID.
 // # 2
       function MargaretExplainDID(choice) {
-
       $('.questions').remove();
       $('p').empty();
       text = "Yes! Dissociative Identity Disorder is a disorder that's formed due to childhood trauma. Essentially, it disrupts the personnality from integrating fully. So instead of having one fully formed personnality, a child will grow up having multiple self-states";
       $('p').append(text);
       addButton("That would be the alters?", 8);
       addButton("And those self-states would end up living their own life, right?", 6);
+      // keep count of the current alter
+      currentAlter = 0;
 }
-
-
 
 
 // Do you consider yourself as the original?
 // #4
       function original() {
-
       $('.questions').remove();
       $('p').empty();
       text = "No, thats just means that I’m out the most often. So I’m in control of the body the most often. I deal with daily life. I make sure we stay safe and healthy. \n A simple way I like to put it is : If you were to drop a glass and it shattered into a number of pieces on the floor, which piece is the original piece? ";
@@ -203,9 +205,11 @@ function margaretDissociating(){
       $('p').empty();
       text = "Uhm...th... I'm sorry, I'm dissociating... ";
       $('p').append(text);
+      // If the player comes from the second question, they are redirected to the 11th one
       if( previousSeq === 2){
       addButton("No worries, take your time.", 11);
       }
+      // Else, they are redirected to the 9th one
       else{
       addButton("It's alright, take your time.", 9);}
       // keep count of the current alter
@@ -219,28 +223,12 @@ function margaretDissociating(){
       text = " ... ";
       $('p').append(text);
       addButton(" ... ", 11);
-
       // keep count of the current alter
       currentAlter = 3;
-
       $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
         }
-
-// // #10
-//     function dissociating2(){
-//         $('.questions').remove();
-//         $('p').empty();
-//         text = " ... Give me a sec,...  ";
-//         $('p').append(text);
-//         addButton(" No worries, take your time.", 11);
-//           // keep count of the current alter
-//         currentAlter = 3;
-//
-//         $html.css("background","linear-gradient(to bottom, #000000, #00009)");
-//         particlesJS.load('particles-js', 'assets/data/none.json', function() {});
-//           }
-
+// -----------------°°°°° James °°°°°-------------------------------------------
 // #11
       function jamesIntro(){
         $('.questions').remove();
@@ -285,12 +273,26 @@ function margaretDissociating(){
 
 // #13
       function jamesWho() {
-
       $('.questions').remove();
       $('p').empty();
-      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight. I'm part of the system, I'm actually the primary protector.   ";
+      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight, yeah. I'm part of the system, I'm actually the primary protector.   ";
       $('p').append(text);
-      addButton(".", 5);
+      addButton("", 14);
       // keep count of the current alter
       currentAlter = 1;
       }
+
+
+  // #13
+      function jamesProtector() {
+      $('.questions').remove();
+      $('p').empty();
+      text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight, yeah. I'm part of the system, I'm actually the primary protector.   ";
+      $('p').append(text);
+      addButton("", 14);
+      // keep count of the current alter
+      currentAlter = 1;
+      }
+
+// -----------------°°°°° Sophia °°°°°------------------------------------------
+// child alter
