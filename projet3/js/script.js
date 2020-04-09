@@ -42,20 +42,27 @@ $clickButton.on('click', first)
   });
 
 
-
-
-// relaxingMusic
-// pizzicato????????????????????????????
-
-
-
 }
+
 // The off function is for the introduction screen
 function off() {
   document.getElementById("homescreen").style.display = "none";
   // When the screen is gone, play and loop the jamesMusic
   hostMusic.loop = true;
   hostMusic.play();
+  speak();
+}
+
+function speak(){
+
+
+  let voiceOptions = {
+  pitch: 1,
+  rate: 0.9,
+  volume: 0.7
+}
+//the voice gives the instructions
+responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
 }
 // We add buttons for each case
 function addButton(label , seq) {
@@ -139,29 +146,36 @@ function addButton(label , seq) {
         break;
 
     case 19:
-      sophiaSwitch();
-      break;
+        sophiaSwitch();
+        break;
 
     case 20:
-      margoEnd();
-      break;
+        margoEnd();
+        break;
 
     case 21:
-      final();
-      break;
+        final();
+        break;
+
+
+    case 22:
+        reset();
+        break;
         }
+
 
       previousSeq = seq;
       });
        $('.dialogue').append(button);
      }
+
+
 // The initial state
 // -----------------°°°°° Margo °°°°°-------------------------------------------
      function first() {
        // The particles act as a visual reprentation of each alter but the main
        // interaction will be a dialogue with the alters
-         particlesJS.load('particles-js', 'assets/data/host.json', function() {});
-
+        particlesJS.load('particles-js', 'assets/data/host.json', function() {});
         $('span').hide();
         $('.questions').remove();
         $('p').empty();
@@ -171,6 +185,7 @@ function addButton(label , seq) {
         addButton("DID?", 2);
         // keep count of the current alter
         currentAlter = 0;
+
       }
 
  // It's nice to meet you Margo. First off all, let me know more about you.
@@ -196,6 +211,7 @@ function addButton(label , seq) {
       $('p').append(text);
       addButton("That would be the alters?", 8);
       addButton("And those self-states would end up living their own life, right?", 6);
+      addButton("What kind of trauma?",8);
       // keep count of the current alter
       currentAlter = 0;
 }
@@ -209,6 +225,7 @@ function addButton(label , seq) {
       text = "No, thats just means that I’m out the most often. So I’m in control of the body the most often. I deal with daily life. I make sure we stay safe and healthy. \n A simple way I like to put it is : If you were to drop a glass and it shattered into a number of pieces on the floor, which piece is the original piece? ";
       $('p').append(text);
       addButton("Can you tell me more about DID", 2);
+      addButton("How exactly do you keep the body safe?" ,8)
       // keep count of the current alter
       currentAlter = 0;
       }
@@ -222,13 +239,14 @@ function addButton(label , seq) {
       text = "Exact! Alters are fragmented parts of your consciousness with completely different memories, opinions, tastes, etc. They might have a different sex, age, gender, orientation. They are their own person! We have a current total of 26 alters :) ";
       $('p').append(text);
       addButton("So they are a coping mechanism used by the brain?", 8);
-      addButton("Do you want me to put on some music?", 8);
+      addButton("Are they there to help you cope with previous trauma?",8)
       // keep count of the current alter
       currentAlter = 0;
       }
 
 // #8
 function margaretDissociating(){
+
       $('.questions').remove();
       $('p').empty();
       text = "Uhm...th... I'm sorry, I'm dissociating... ";
@@ -257,16 +275,16 @@ function margaretDissociating(){
       currentAlter = 3;
       $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
+
         }
 
-
+// #20
     function margoEnd(){
       $('.questions').remove();
       $('p').empty();
-      text = " ... Hi, it's Margo. ";
+      text = " ... Hi, it's Margo. My head hurts... ";
       $('p').append(text);
       addButton(" Hi Margo, I got to meet James and Sophia. I want you to feel safe, if you need some rest would you like to end the interview? ", 21);
-
       childAlterMusic.pause();
       hostMusic.loop = true;
       hostMusic.play();
@@ -276,24 +294,34 @@ function margaretDissociating(){
       particlesJS.load('particles-js', 'assets/data/host.json', function() {});
     }
 
-
+// #21
     function final(){
       $('.questions').remove();
       $('p').empty();
       text = "Yes please. It was nice talking to you, I hope this interview helped people learn more about DID. ";
       $('p').append(text);
-      addButton("Thank you");
+      addButton("Thank you", 22);
       // keep count of the current alter
       currentAlter = 0;
     }
+
+
+// 22
+  function reset(){
+      hostMusic.pause();
+      $('.guess').remove();
+      $('p').empty();
+      $('span').show();
+        }
 // -----------------°°°°° James °°°°°-------------------------------------------
 // #11
       function jamesIntro(){
         $('.questions').remove();
         $('p').empty();
-        text = "...Hoy! I don't think we've met, my name's James. Nice to meet ya... Where are we exactly?";
+        text = "...Hoy! I don't think we've met. Nice to meet ya... Where are we exactly?";
         $('p').append(text);
-        addButton(" Hi James. We're in the middle of an interview for my master's degree. Do you feel comfortable continuing the interview? ", 12);
+        addButton(" Hi. We're in the middle of an interview for my master's degree. Do you feel comfortable continuing the interview? ", 12);
+        addButton(" Who are you? ", 13);
         // keep count of the current alter
         currentAlter = 2;
         hostMusic.pause();
