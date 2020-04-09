@@ -31,6 +31,7 @@ function setup() {
 // Load the songs
 hostMusic = new Audio('assets/sounds/output2975.mp3');
 jamesMusic = new Audio('assets/sounds/guitar.mp3');
+childAlterMusic= new Audio('assets/sounds/child.wav');
 // Generate buttons to switch between texts
 $clickButton = $("#click");
 $clickButton.on('click', first)
@@ -126,13 +127,28 @@ function addButton(label , seq) {
           break;
 
     case 16:
-          sophiaFear();
+          sophiaHi();
           break;
 
     case 17:
           sophiaTalks();
           break;
 
+    case 18:
+        sophiaFear();
+        break;
+
+    case 19:
+      sophiaSwitch();
+      break;
+
+    case 20:
+      margoEnd();
+      break;
+
+    case 21:
+      final();
+      break;
         }
 
       previousSeq = seq;
@@ -222,10 +238,6 @@ function margaretDissociating(){
         // leads to James
       addButton("No worries, take your time.", 11);
       }
-      if (previousSeq === 6){
-        // Leads to Sophia
-      addButton("Take your time, it's alright.", 15);
-      }
       // Else, they are redirected to the 9th one, which also leads to james haha
       else{
       addButton("It's alright, take your time.", 9);
@@ -246,6 +258,34 @@ function margaretDissociating(){
       $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
         }
+
+
+    function margoEnd(){
+      $('.questions').remove();
+      $('p').empty();
+      text = " ... Hi, it's Margo. ";
+      $('p').append(text);
+      addButton(" Hi Margo, I got to meet James and Sophia. I want you to feel safe, if you need some rest would you like to end the interview? ", 21);
+
+      childAlterMusic.pause();
+      hostMusic.loop = true;
+      hostMusic.play();
+      // keep count of the current alter
+      currentAlter = 0;
+      $html.css("background","linear-gradient(to bottom, #000000, #000033)");
+      particlesJS.load('particles-js', 'assets/data/host.json', function() {});
+    }
+
+
+    function final(){
+      $('.questions').remove();
+      $('p').empty();
+      text = "Yes please. It was nice talking to you, I hope this interview helped people learn more about DID. ";
+      $('p').append(text);
+      addButton("Thank you");
+      // keep count of the current alter
+      currentAlter = 0;
+    }
 // -----------------°°°°° James °°°°°-------------------------------------------
 // #11
       function jamesIntro(){
@@ -305,9 +345,9 @@ function margaretDissociating(){
       function jamesProtector() {
       $('.questions').remove();
       $('p').empty();
-      text = "That means I'm   ";
+      text = "That means I take care of the younger or more vulnerable alters, I also protect the system ... I'm sorry I'm dissociatin' ";
       $('p').append(text);
-      addButton(".", 15);
+      addButton("It's alright", 15);
       // keep count of the current alter
       currentAlter = 1;
       }
@@ -323,15 +363,21 @@ function margaretDissociating(){
       addButton("Hello, what's your name? ", 16);
       // keep count of the current alter
       currentAlter = 2;
+      hostMusic.pause();
+      jamesMusic.pause();
+      childAlterMusic.loop = true;
+      childAlterMusic.play();
+      $html.css("background","linear-gradient(to bottom, #FFCCE5, #FFFFFF)");
+      particlesJS.load('particles-js', 'assets/data/child.json', function() {});
     }
 
 // #16
-    function sophiaFear(){
+    function sophiaHi(){
       $('.questions').remove();
       $('p').empty();
       text = "...Sophia... im 5 ";
       $('p').append(text);
-      addButton("Hi Sophia! Glad to meet you. I was just talking with someone else about your system.  ", 17);
+      addButton("Hi Sophia! Glad to meet you. I was just talking with someone else about DID.  ", 17);
       // keep count of the current alter
       currentAlter = 2;
     }
@@ -339,10 +385,32 @@ function margaretDissociating(){
     function sophiaTalks(){
       $('.questions').remove();
       $('p').empty();
-      text = "...We have DID! James told me last time we are together like a big family ";
+      text = "...We have DID! James told me last time that we are together like a big family ";
       $('p').append(text);
       addButton("Yes and he is right! ", 18);
       // keep count of the current alter
       currentAlter = 2;
+    }
 
+// #18
+    function sophiaFear(){
+      $('.questions').remove();
+      $('p').empty();
+      text = "...But im scared... I dont wanna be here...  (She starts crying) ...Sometimes I remember things and when I do i get scared and I wish I could disapear... I think I'm not alone... hold onto me please i'm leaving...  ";
+      $('p').append(text);
+      addButton("(Thinking about their past trauma is a negative trigger, she's dissociating. You give her some space) ", 19);
+      // keep count of the current alter
+      currentAlter = 2;
+    }
+
+// #19
+    function sophiaSwitch(){
+      $('.questions').remove();
+      $('p').empty();
+      text = " ...  ";
+      $('p').append(text);
+      // switches back to margo
+      addButton(" ... ", 20);
+      // keep count of the current alter
+      currentAlter = 0;
     }
