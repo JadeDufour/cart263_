@@ -5,9 +5,7 @@
 Alters
 Jade Dufour
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
-
+Alters is the story of a psychology student interviewing Margaret, the host of a system with multiple personalities. Along the way the player also meets James and Sophia, both alters of the system. Each alters has a specific vibe to them to visually represent their personalities.
 *********************************************************************/
 
 
@@ -26,8 +24,8 @@ let windowWidth;
 let currentAlter;
 let previousSeq;
 
-
 function setup() {
+
 // Load the songs
 hostMusic = new Audio('assets/sounds/output2975.mp3');
 jamesMusic = new Audio('assets/sounds/guitar.mp3');
@@ -41,7 +39,6 @@ $clickButton.on('click', first)
     cursor: 'url(assets/images/hand.png), auto'
   });
 
-
 }
 
 // The off function is for the introduction screen
@@ -51,11 +48,15 @@ function off() {
   hostMusic.loop = true;
   hostMusic.play();
   speak();
+
+  // typewritter try *******************************************************
+  type();
+  // typewritter try *******************************************************
 }
 
 function speak(){
 
-
+// The voice options for responsivevoice
   let voiceOptions = {
   pitch: 1,
   rate: 0.9,
@@ -64,6 +65,11 @@ function speak(){
 //the voice gives the instructions
 responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
 }
+
+
+
+
+
 // We add buttons for each case
 function addButton(label , seq) {
   let button = $('<div class="questions"></div>');
@@ -167,8 +173,8 @@ function addButton(label , seq) {
       previousSeq = seq;
       });
        $('.dialogue').append(button);
-     }
 
+     }
 
 // The initial state
 // -----------------°°°°° Margo °°°°°-------------------------------------------
@@ -442,3 +448,30 @@ function margaretDissociating(){
       // keep count of the current alter
       currentAlter = 0;
     }
+
+
+
+// typewritter try *******************************************************
+// from https://codepen.io/divD/pen/OzVjQj
+
+         function type(){
+
+           var pos = 0;
+           var turn = 0;
+           var data = $('#story').text();
+           var speed = 200;
+
+           setTimeout(typeWriter, speed);
+
+
+         function typeWriter() {
+           if (pos < data) {
+             document.getElementById("test").innerHTML += data.charAt(pos);
+             console.log(data.charAt(pos));
+             pos++;
+         setTimeout(typeWriter, speed);
+           }
+         }
+         }
+
+// typewritter try *******************************************************
