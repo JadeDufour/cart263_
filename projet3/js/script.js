@@ -451,8 +451,7 @@ function margaretDissociating(){
 
 
 
-// typewritter try *******************************************************
-// from https://codepen.io/divD/pen/OzVjQj
+
 
          function type(){
 
@@ -473,5 +472,3 @@ function margaretDissociating(){
            }
          }
          }
-
-// typewritter try *******************************************************
