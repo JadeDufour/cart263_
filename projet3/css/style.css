@@ -5,8 +5,7 @@ body {
   font-weight: bold;
   text-align: center;
   display: flex;
-flex-wrap: wrap;
-
+  flex-wrap: wrap;
 }
 
 /* ************************* HTML setup ************************************* */
@@ -32,7 +31,13 @@ html {
 @import url('https://fonts.googleapis.com/css?family=Bellota&display=swap');
 
 @keyframes opac {
-  from {opacity:0} to {opacity:1}
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 canvas {
@@ -44,11 +49,8 @@ canvas {
   z-index: -2;
 }
 
-
 /* *****************************Intro button ******************************** */
-
 /* Code from https://www.fabriziovanmarciano.com/button-styles/?cn-reloaded=1 */
-
 #click {
   text-align: center;
   margin: auto;
@@ -83,6 +85,7 @@ canvas {
   position: relative;
   transition: 0.4s;
 }
+
 .button_f span:after {
   content: '\00bb';
   position: absolute;
@@ -91,15 +94,15 @@ canvas {
   right: -150px;
   transition: 0.5s;
 }
+
 .button_f:hover span {
   padding-right: 25px;
 }
+
 .button_f:hover span:after {
   opacity: 1;
   right: 0;
 }
-
-
 
 /* **************************Disclaimer Screen ****************************** */
 #homescreen {
@@ -122,15 +125,13 @@ canvas {
   /* Add a pointer on hover */
   font-family: 'Bellota';
   font-size: 15px;
-
   text-align: center;
   padding-top: 200px;
   color: white;
 }
 
-
 /* ********** Everything concerning questions and dialogues ***************** */
-.dialogue{
+.dialogue {
   font-family: 'Quicksand';
   font-size: 1rem;
   width: 900px;
@@ -153,7 +154,14 @@ canvas {
 }
 
 /* A fun blinking cursor I found online : https://codepen.io/bradtraversy/pen/jeNjwP */
-.type-cursor { color:black; animation:blink .9s ease infinite;opacity:0; }
- @keyframes blink {
- 	100% { opacity:1; }
- }
+.type-cursor {
+  color: black;
+  animation: blink .9s ease infinite;
+  opacity: 0;
+}
+
+@keyframes blink {
+  100% {
+    opacity: 1;
+  }
+}
