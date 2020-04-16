@@ -450,7 +450,7 @@ function sophiaSwitch() {
 function type(data) {
 
   var pos = 0;
-  var speed = 30;
+  var speed = 25;
   typeWriter();
 
   // typeWriter()
