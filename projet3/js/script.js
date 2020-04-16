@@ -24,8 +24,8 @@ let windowWidth;
 let currentAlter;
 let previousSeq;
 
+// setup()
 function setup() {
-
 // Load the songs
 hostMusic = new Audio('assets/sounds/output2975.mp3');
 jamesMusic = new Audio('assets/sounds/guitar.mp3');
@@ -38,24 +38,21 @@ $clickButton.on('click', first)
   $('body').css({
     cursor: 'url(assets/images/hand.png), auto'
   });
-
 }
 
+// off()
 // The off function is for the introduction screen
 function off() {
   document.getElementById("homescreen").style.display = "none";
-  // When the screen is gone, play and loop the jamesMusic
+  // When the screen is gone, play and loop the music
   hostMusic.loop = true;
   hostMusic.play();
+  // When the Disclaimer screen is gone, a voice tells the instructions
   speak();
-
-  // // typewritter try *******************************************************
-  // type();
-  // // typewritter try *******************************************************
 }
 
+// speak()
 function speak(){
-
 // The voice options for responsivevoice
   let voiceOptions = {
   pitch: 1,
@@ -63,13 +60,11 @@ function speak(){
   volume: 0.7
 }
 //the voice gives the instructions
-// responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
+responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
 }
 
 
-
-
-
+// addButton()
 // We add buttons for each case
 function addButton(label , seq) {
   let button = $('<div class="questions"></div>');
@@ -77,7 +72,7 @@ function addButton(label , seq) {
   button.button();
   button.on('click', function() {
     //I used switch states to switch between the questions in the dialogue
-
+    // Kinda like a Choose Your Own Adventure Novel
     switch (seq) {
       case 1:
           MargaretIntro();
@@ -163,17 +158,14 @@ function addButton(label , seq) {
         final();
         break;
 
-
     case 22:
         reset();
         break;
         }
 
-
       previousSeq = seq;
       });
        $('.dialogue').append(button);
-
      }
 
 // The initial state
@@ -191,14 +183,12 @@ function addButton(label , seq) {
         addButton("DID?", 2);
         // keep count of the current alter
         currentAlter = 0;
-
       }
 
- // It's nice to meet you Margo. First off all, let me know more about you.
  // # 1
       function MargaretIntro() {
       $('.questions').remove();
-
+      $('p').empty();
       text = "Well, my name is Margo, I consider myself part of a DID system of which I am the host so I use the body's legal name. I'm a 26 years old female and I identify as pansexual. I love music and outdoor activities!";
       type(text);
       addButton("Do you consider yourself as the 'original'then?", 4);
@@ -207,14 +197,12 @@ function addButton(label , seq) {
       }
 
 
-// DID?
-// Can you explain exactly what it DID.
 // # 2
       function MargaretExplainDID(choice) {
       $('.questions').remove();
       $('p').empty();
       text = "Yes! Dissociative Identity Disorder is a disorder that's formed due to childhood trauma. Essentially, it disrupts the personnality from integrating fully. So instead of having one fully formed personnality, a child will grow up having multiple self-states";
-        type(text);
+      type(text);
       addButton("That would be the alters?", 8);
       addButton("And those self-states would end up living their own life, right?", 6);
       addButton("What kind of trauma?",8);
@@ -236,8 +224,7 @@ function addButton(label , seq) {
       currentAlter = 0;
       }
 
-  // That would be the alters, right?
-  // And if I'm correct, those self-states would end up living their own life.
+
   //  # 6
     function margaretExplainsAlters() {
       $('.questions').remove();
@@ -249,6 +236,8 @@ function addButton(label , seq) {
       // keep count of the current alter
       currentAlter = 0;
       }
+
+  // There is no #7, I had to delete it mid-process because is served no purpose anymore
 
 // #8
 function margaretDissociating(){
@@ -267,7 +256,6 @@ function margaretDissociating(){
       addButton("It's alright, take your time.", 9);
       // keep count of the current alter
       currentAlter = 0;}
-
     }
 
 // #9
@@ -281,9 +269,8 @@ function margaretDissociating(){
       currentAlter = 3;
       $html.css("background","linear-gradient(to bottom, #000000, #00009)");
       particlesJS.load('particles-js', 'assets/data/none.json', function() {});
-
         }
-
+// Jump from Margo, to James to Sophia and back to Margo
 // #20
     function margoEnd(){
       $('.questions').remove();
@@ -291,6 +278,7 @@ function margaretDissociating(){
       text = " ... Hi, it's Margo. My head hurts... ";
     type(text);
       addButton(" Hi Margo, I got to meet James and Sophia. I want you to feel safe, if you need some rest would you like to end the interview? ", 21);
+      // Change music
       childAlterMusic.pause();
       hostMusic.loop = true;
       hostMusic.play();
@@ -311,28 +299,32 @@ function margaretDissociating(){
       currentAlter = 0;
     }
 
-
 // 22
   function reset(){
       hostMusic.pause();
       $('.guess').remove();
       $('p').empty();
       $('span').show();
-        }
+      }
+
+
 // -----------------°°°°° James °°°°°-------------------------------------------
 // #11
       function jamesIntro(){
         $('.questions').remove();
         $('p').empty();
         text = "...Hoy! I don't think we've met. Nice to meet ya... Where are we exactly?";
-          type(text);
+        // I pasted this function everytime so I wont' comment it 20 times, but what it does is call the typewriter effect for the alters's answers
+        type(text);
         addButton(" Hi. We're in the middle of an interview for my master's degree. Do you feel comfortable continuing the interview? ", 12);
         addButton(" Who are you? ", 13);
         // keep count of the current alter
         currentAlter = 2;
+        // Change the music
         hostMusic.pause();
         jamesMusic.loop = true;
         jamesMusic.play();
+          // Switched alter so the background must change too
         $html.css("background","linear-gradient(to bottom, #000000, #7C0000)");
        particlesJS.load('particles-js', 'assets/data/james.json', function() {});
       }
@@ -397,10 +389,12 @@ function margaretDissociating(){
       addButton("Hello, what's your name? ", 16);
       // keep count of the current alter
       currentAlter = 2;
+      // Change the music
       hostMusic.pause();
       jamesMusic.pause();
       childAlterMusic.loop = true;
       childAlterMusic.play();
+      // Switched alter so the background must change too
       $html.css("background","linear-gradient(to bottom, #FFCCE5, #FFFFFF)");
       particlesJS.load('particles-js', 'assets/data/child.json', function() {});
     }
@@ -431,7 +425,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "...But im scared... I dont wanna be here...  (She starts crying) ...Sometimes I remember things and when I do i get scared and I wish I could disapear... I think I'm not alone... hold onto me please i'm leaving...  ";
-        type(text);
+      type(text);
       addButton("(Thinking about their past trauma is a negative trigger, she's dissociating. You give her some space) ", 19);
       // keep count of the current alter
       currentAlter = 2;
@@ -450,23 +444,27 @@ function margaretDissociating(){
     }
 
 
+// TypeWriter effect  **********************************************************
+// code NOT from me, I got help from Pippin and CopePen : https://codepen.io/divD/pen/OzVjQj
+   function type(data){
 
+       var pos = 0;
+       var speed = 30;
+       typeWriter();
 
-
-         function type(data){
-
-           var pos = 0;
-           var speed = 60;
-
-           setTimeout(typeWriter, speed);
-           
-
+       // typeWriter()
          function typeWriter() {
            if (pos < data.length) {
+            // We hide the questions until the alter is done talking. Otherwise the texts would all get messed up
+            $('.questions').hide();
              document.getElementById("dataLog").innerHTML += data.charAt(pos);
              console.log(data.charAt(pos));
              pos++;
              setTimeout(typeWriter, speed);
            }
+           else {
+             // When the alter is done talking, we show the possible answers
+             $('.questions').show();
+           }
          }
-         }
+       }

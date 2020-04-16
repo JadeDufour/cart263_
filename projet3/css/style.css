@@ -101,8 +101,7 @@ canvas {
 
 
 
-
-/* ====================================== */
+/* **************************Disclaimer Screen ****************************** */
 #homescreen {
   position: fixed;
   /* Sit on top of the page content */
@@ -130,8 +129,6 @@ canvas {
 }
 
 
-
-
 /* ********** Everything concerning questions and dialogues ***************** */
 .dialogue{
   font-family: 'Quicksand';
@@ -155,7 +152,7 @@ canvas {
   margin-top: 50px;
 }
 
-
+/* A fun blinking cursor I found online : https://codepen.io/bradtraversy/pen/jeNjwP */
 .type-cursor { color:black; animation:blink .9s ease infinite;opacity:0; }
  @keyframes blink {
  	100% { opacity:1; }
