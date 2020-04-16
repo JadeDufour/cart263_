@@ -49,9 +49,9 @@ function off() {
   hostMusic.play();
   speak();
 
-  // typewritter try *******************************************************
-  type();
-  // typewritter try *******************************************************
+  // // typewritter try *******************************************************
+  // type();
+  // // typewritter try *******************************************************
 }
 
 function speak(){
@@ -63,7 +63,7 @@ function speak(){
   volume: 0.7
 }
 //the voice gives the instructions
-responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
+// responsiveVoice.speak($('.dialogue').text(), 'UK English Female', voiceOptions);
 }
 
 
@@ -186,7 +186,7 @@ function addButton(label , seq) {
         $('.questions').remove();
         $('p').empty();
         text = "Hi! My name is Margo. I'm so glad you invited us today, we can't wait to let the world know about DID! ";
-        $('p').append(text)
+        type(text);
         addButton("It's nice to meet you Margo. First off all, let me know more about you.", 1);
         addButton("DID?", 2);
         // keep count of the current alter
@@ -198,9 +198,9 @@ function addButton(label , seq) {
  // # 1
       function MargaretIntro() {
       $('.questions').remove();
-      $('p').empty();
+
       text = "Well, my name is Margo, I consider myself part of a DID system of which I am the host so I use the body's legal name. I'm a 26 years old female and I identify as pansexual. I love music and outdoor activities!";
-      $('p').append(text);
+      type(text);
       addButton("Do you consider yourself as the 'original'then?", 4);
       // keep count of the current alter
       currentAlter = 0;
@@ -214,7 +214,7 @@ function addButton(label , seq) {
       $('.questions').remove();
       $('p').empty();
       text = "Yes! Dissociative Identity Disorder is a disorder that's formed due to childhood trauma. Essentially, it disrupts the personnality from integrating fully. So instead of having one fully formed personnality, a child will grow up having multiple self-states";
-      $('p').append(text);
+        type(text);
       addButton("That would be the alters?", 8);
       addButton("And those self-states would end up living their own life, right?", 6);
       addButton("What kind of trauma?",8);
@@ -229,7 +229,7 @@ function addButton(label , seq) {
       $('.questions').remove();
       $('p').empty();
       text = "No, thats just means that I’m out the most often. So I’m in control of the body the most often. I deal with daily life. I make sure we stay safe and healthy. \n A simple way I like to put it is : If you were to drop a glass and it shattered into a number of pieces on the floor, which piece is the original piece? ";
-      $('p').append(text);
+        type(text);
       addButton("Can you tell me more about DID", 2);
       addButton("How exactly do you keep the body safe?" ,8)
       // keep count of the current alter
@@ -243,7 +243,7 @@ function addButton(label , seq) {
       $('.questions').remove();
       $('p').empty();
       text = "Exact! Alters are fragmented parts of your consciousness with completely different memories, opinions, tastes, etc. They might have a different sex, age, gender, orientation. They are their own person! We have a current total of 26 alters :) ";
-      $('p').append(text);
+        type(text);
       addButton("So they are a coping mechanism used by the brain?", 8);
       addButton("Are they there to help you cope with previous trauma?",8)
       // keep count of the current alter
@@ -256,7 +256,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "Uhm...th... I'm sorry, I'm dissociating... ";
-      $('p').append(text);
+        type(text);
       // If the player comes from the second question, they are redirected to the 11th one
       if( previousSeq === 2){
         // leads to James
@@ -275,7 +275,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = " ... ";
-      $('p').append(text);
+        type(text);
       addButton(" ... ", 11);
       // keep count of the current alter
       currentAlter = 3;
@@ -289,7 +289,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = " ... Hi, it's Margo. My head hurts... ";
-      $('p').append(text);
+    type(text);
       addButton(" Hi Margo, I got to meet James and Sophia. I want you to feel safe, if you need some rest would you like to end the interview? ", 21);
       childAlterMusic.pause();
       hostMusic.loop = true;
@@ -305,7 +305,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "Yes please. It was nice talking to you, I hope this interview helped people learn more about DID. ";
-      $('p').append(text);
+      type(text);
       addButton("Thank you", 22);
       // keep count of the current alter
       currentAlter = 0;
@@ -325,7 +325,7 @@ function margaretDissociating(){
         $('.questions').remove();
         $('p').empty();
         text = "...Hoy! I don't think we've met. Nice to meet ya... Where are we exactly?";
-        $('p').append(text);
+          type(text);
         addButton(" Hi. We're in the middle of an interview for my master's degree. Do you feel comfortable continuing the interview? ", 12);
         addButton(" Who are you? ", 13);
         // keep count of the current alter
@@ -343,7 +343,7 @@ function margaretDissociating(){
         $('.questions').remove();
         $('p').empty();
         text = "Sure thing! Margo told me we was goin to do this. ";
-        $('p').append(text);
+        type(text);
         addButton(" We were discussing alters, can you define what exactly is an alter? ", 7);
         addButton("Is it just me or do I hear a different accent than Margo's?", 13);
         // keep count of the current alter
@@ -357,7 +357,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "Yeah, alter stands for 'Alternate States of Consciousness'. An alter aint someone how HAS DID. Now, people really need to take that off their minds. Alters can hold trauma, others can act as protectors, some of 'em are young, others are like super old. We have a current total of 26 alters.";
-      $('p').append(text);
+      type(text);
       addButton("I see. Can you tell me more about yourself, James?", 13);
       // keep count of the current alter
       currentAlter = 1;
@@ -368,7 +368,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "F*ck I forgot to present myself... I always do that. My name's James, I'm 19 and I think I'm straight, yeah. I'm part of the system, I'm actually the primary protector.   ";
-      $('p').append(text);
+        type(text);
       addButton("What exactly is a primary protector?", 14);
       // keep count of the current alter
       currentAlter = 1;
@@ -380,7 +380,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "That means I take care of the younger or more vulnerable alters, I also protect the system ... I'm sorry I'm dissociatin' ";
-      $('p').append(text);
+        type(text);
       addButton("It's alright", 15);
       // keep count of the current alter
       currentAlter = 1;
@@ -393,7 +393,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "...Hi...  ";
-      $('p').append(text);
+        type(text);
       addButton("Hello, what's your name? ", 16);
       // keep count of the current alter
       currentAlter = 2;
@@ -410,7 +410,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "...Sophia... im 5 ";
-      $('p').append(text);
+      type(text);
       addButton("Hi Sophia! Glad to meet you. I was just talking with someone else about DID.  ", 17);
       // keep count of the current alter
       currentAlter = 2;
@@ -420,7 +420,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "...We have DID! James told me last time that we are together like a big family ";
-      $('p').append(text);
+        type(text);
       addButton("Yes and he is right! ", 18);
       // keep count of the current alter
       currentAlter = 2;
@@ -431,7 +431,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = "...But im scared... I dont wanna be here...  (She starts crying) ...Sometimes I remember things and when I do i get scared and I wish I could disapear... I think I'm not alone... hold onto me please i'm leaving...  ";
-      $('p').append(text);
+        type(text);
       addButton("(Thinking about their past trauma is a negative trigger, she's dissociating. You give her some space) ", 19);
       // keep count of the current alter
       currentAlter = 2;
@@ -442,7 +442,7 @@ function margaretDissociating(){
       $('.questions').remove();
       $('p').empty();
       text = " ...  ";
-      $('p').append(text);
+      type(text);
       // switches back to margo
       addButton(" ... ", 20);
       // keep count of the current alter
@@ -453,22 +453,20 @@ function margaretDissociating(){
 
 
 
-         function type(){
+         function type(data){
 
            var pos = 0;
-           var turn = 0;
-           var data = $('#story').text();
-           var speed = 200;
+           var speed = 60;
 
            setTimeout(typeWriter, speed);
-
+           
 
          function typeWriter() {
-           if (pos < data) {
-             document.getElementById("test").innerHTML += data.charAt(pos);
+           if (pos < data.length) {
+             document.getElementById("dataLog").innerHTML += data.charAt(pos);
              console.log(data.charAt(pos));
              pos++;
-         setTimeout(typeWriter, speed);
+             setTimeout(typeWriter, speed);
            }
          }
          }
